@@ -1,98 +1,129 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, } from 'react-native';
-import { Link } from 'expo-router';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Linking} from 'react-native';
+import {Link} from 'expo-router'
 
-export default function App() {
+export default function index() {
   return (
     <View style={styles.container}>
-      <View> 
-        <Image source={require('../assets/Logo1.png')} style={styles.logo} />
+      <View style={styles.topContainer}>
+        <Image source={require('../assets/images/Logo.png')} style={styles.imagem} />
+        <Text style={styles.titulo}>Faça login em sua conta</Text>
       </View>
-          <Text style={styles.title}>Faça login na sua conta</Text>
-        <Text style={styles.subtitle}>Email</Text>
-        <TextInput style={styles.input} placeholder="Insira seu endereço de email" />
-        <Text style={styles.subtitle}>Senha</Text>
-        <TextInput style={styles.input} secureTextEntry={true} placeholder="Insira sua senha" />
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Entrar</Text>
+
+      <View style={styles.formContainer}>
+        <Text style={styles.captionInput}>Email</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Insira seu endereço de email"
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+        <Text style={styles.captionInput}>Senha</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Insira a sua senha"
+          secureTextEntry={true}
+        />
+
+        <Link href='/navegation' style={styles.button}><Text style={styles.buttonText}>Entrar</Text></Link>
+        <TouchableOpacity onPress={() => alert('Esqueci minha senha!')}>
+          <Text style={styles.linkText}>Esqueceu sua Senha?</Text>
         </TouchableOpacity>
-        <Text style={styles.forgotPassword}>Esqueceu sua senha?</Text>
-        <StatusBar style="auto" />
-        <Text style={styles.register}><Link href="/cadastro">Ainda não tem conta? Faça seu cadastro</Link></Text>
-        
-        
+      </View>
+
+      <View style={styles.bottomContainer}>
+          <Text style={styles.linkCadastro}>
+            <Text>Ainda não tem conta? </Text>
+            <Text style={[styles.linkText, { color: '#339CFF', fontWeight: 'bold' }]}>
+              <Link href='/cadastro1'>Faça seu cadastro!</Link>
+            </Text>
+          </Text>
+      </View>
+
+      <StatusBar style="auto" />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  titulo: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: "#6B6E71",
+    marginBottom: 20,
+  },
+  captionInput: {
+    color: "#0B3B60",
+    fontWeight: 'bold',
+    fontSize: 18,
+    marginBottom: 5,
+    width: '85%',
+  },
+  imagem: {
+    width: 180,
+    height: 180,
+    marginBottom: 55,
+  },
+  input: {
+    width: '85%',
+    height: 47,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    padding: 10,
+    marginBottom: 30,
+    borderRadius: 5,
+    backgroundColor: '#F8F8F8',
+
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    justifyContent: 'space-between',
+  },
+  topContainer: {
+    alignItems: 'center',
+    marginTop: 90,
+  },
+  formContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    display: 'flex',
-    marginTop: 300,
+    marginBottom: 30,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    display: 'flex',
-    justifyContent: 'center',
+  bottomContainer: {
     alignItems: 'center',
-  },
-  logo: {
-    width: 140,
-    height: 142,
-    marginTop: -250,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  subtitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    marginTop: 20,
-    display: 'flex',
-    marginLeft: -320,
-  },
-  input: {
-    width: 370,
-    height: 60,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    paddingHorizontal: 10,
+    marginBottom: 70,
   },
   button: {
-    width: 370,
-    height: 60,
     backgroundColor: '#0B3B60',
+    padding: 10,
     borderRadius: 5,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 20,
-    borderRadius: 10,
+    marginTop: 10,
+    textAlign: 'center',
+    width: '85%',
+    height: 48
   },
   buttonText: {
     color: '#fff',
-    fontSize: 20,
     fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 16,
   },
-  forgotPassword: {
-    marginTop: 20,
+  linkText: {
     color: '#0B3B60',
-    fontSize: 16,
-    fontWeight: 'bold',
+    marginTop: 15,
     textDecorationLine: 'underline',
-  },
-  register: {
-    marginTop: 100,
-    color: '#000',
     fontSize: 16,
-    fontWeight: 'bold',
   },
+
+  linkCadastro: {
+    color: '#0B3B60',
+    marginTop: 15,
+    fontSize: 16,
+  }
 });
