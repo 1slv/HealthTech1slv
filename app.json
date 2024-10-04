@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "project",
-    "slug": "project",
+    "name": "desafio_layout",
+    "slug": "desafio_layout",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "scheme": "HealthTech",
+    "scheme": "desafio_layout",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -24,7 +24,6 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "entryPoint": "./app/App.js",
     "plugins": [
       "expo-router"
     ]
